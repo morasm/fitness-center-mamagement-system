@@ -1,0 +1,144 @@
+DROP DATABASE silownia;
+CREATE DATABASE silownia;
+USE silownia;
+
+CREATE TABLE abonament (
+    id_abonamentu             SMALLINT NOT NULL,
+    cena                      NUMERIC(5, 2) NOT NULL,
+    okres_obowiazywania       DATE NOT NULL,
+    pracownik_id_pracownika   SMALLINT NOT NULL,
+    klient_pesel              NUMERIC(11) NOT NULL
+);
+
+CREATE UNIQUE INDEX abonament__idx ON
+    abonament (
+        klient_pesel
+    ASC );
+
+ALTER TABLE abonament ADD CONSTRAINT abonament_pk PRIMARY KEY ( id_abonamentu );
+
+CREATE TABLE dyzur_pracownika (
+    id_dyzuru                 SMALLINT NOT NULL,
+    data_dyzuru               DATE NOT NULL,
+    godzina_rozpoczecia       DATE NOT NULL,
+    godzina_zakonczenia       DATE,
+    pracownik_id_pracownika   SMALLINT NOT NULL
+);
+
+ALTER TABLE dyzur_pracownika ADD CONSTRAINT dyzur_pracownika_pk PRIMARY KEY ( id_dyzuru,
+                                                                              pracownik_id_pracownika );
+
+CREATE TABLE klient (
+    pesel            NUMERIC(11) NOT NULL,
+    imie             VARCHAR(20) NOT NULL,
+    nazwisko         VARCHAR(20) NOT NULL,
+    adres_miasto     VARCHAR(30) NOT NULL,
+    adres_ulica      VARCHAR(30) NOT NULL,
+    adres_nr_domu    SMALLINT NOT NULL,
+    data_zapisania   DATE NOT NULL
+);
+
+ALTER TABLE klient ADD CONSTRAINT klient_pk PRIMARY KEY ( pesel );
+
+CREATE TABLE konserwacja (
+    data_konserwacji           DATE NOT NULL,
+    techniczny_id_pracownika   SMALLINT NOT NULL,
+    urzadzenie_nr_inwentarza   SMALLINT NOT NULL
+);
+
+ALTER TABLE konserwacja ADD CONSTRAINT konserwacja_pk PRIMARY KEY ( techniczny_id_pracownika,
+                                                                    urzadzenie_nr_inwentarza );
+
+CREATE TABLE pracownik (
+    id_pracownika             SMALLINT NOT NULL,
+    data_rozpoczecia_pracy    DATE NOT NULL,
+    pensja                    NUMERIC(6, 2) NOT NULL,
+    premia                    NUMERIC(6, 2),
+    pracownik_id_pracownika   SMALLINT
+);
+
+ALTER TABLE pracownik ADD CONSTRAINT pracownik_pk PRIMARY KEY ( id_pracownika );
+
+CREATE TABLE prowadzenie (
+    trener_id_pracownika   SMALLINT NOT NULL,
+    trening_nazwa          VARCHAR(20) NOT NULL
+);
+
+ALTER TABLE prowadzenie ADD CONSTRAINT prowadzenie_pk PRIMARY KEY ( trener_id_pracownika,
+                                                                    trening_nazwa );
+
+CREATE TABLE przebieg (
+    godzina_rozpoczecia   DATE NOT NULL,
+    sala_nr_sali          SMALLINT NOT NULL,
+    trening_nazwa         VARCHAR(20) NOT NULL
+);
+
+ALTER TABLE przebieg ADD CONSTRAINT przebieg_pk PRIMARY KEY ( sala_nr_sali,
+                                                              trening_nazwa );
+
+CREATE TABLE rezerwacja (
+    data_rezerwacji            DATE NOT NULL,
+    urzadzenie_nr_inwentarza   SMALLINT NOT NULL,
+    klient_pesel               NUMERIC(11) NOT NULL
+);
+
+ALTER TABLE rezerwacja ADD CONSTRAINT rezerwacja_pk PRIMARY KEY ( urzadzenie_nr_inwentarza,
+                                                                  klient_pesel );
+
+CREATE TABLE sala (
+    nr_sali         SMALLINT NOT NULL,
+    liczba_miejsc   SMALLINT
+);
+
+ALTER TABLE sala ADD CONSTRAINT sala_pk PRIMARY KEY ( nr_sali );
+
+CREATE TABLE techniczny (
+    id_pracownika   SMALLINT NOT NULL,
+    upr_SEP       DATE
+);
+
+ALTER TABLE techniczny ADD CONSTRAINT techniczny_pk PRIMARY KEY ( id_pracownika );
+
+CREATE TABLE telefon (
+    nr_tel         CHAR(10) NOT NULL,
+    klient_pesel   NUMERIC(11) NOT NULL
+);
+
+ALTER TABLE telefon ADD CONSTRAINT telefon_pk PRIMARY KEY ( nr_tel,
+                                                            klient_pesel );
+
+CREATE TABLE trener (
+    id_pracownika   SMALLINT NOT NULL,
+    kwalifikacje    VARCHAR(20)
+);
+
+ALTER TABLE trener ADD CONSTRAINT trener_pk PRIMARY KEY ( id_pracownika );
+
+CREATE TABLE trening (
+    nazwa                   VARCHAR(20) NOT NULL,
+    czas_trwania            SMALLINT NOT NULL,
+    stopien_zaawansowania   VARCHAR(20)
+);
+
+ALTER TABLE trening ADD CONSTRAINT trening_pk PRIMARY KEY ( nazwa );
+
+CREATE TABLE trening_grupowy (
+    nazwa                VARCHAR(20) NOT NULL,
+    liczba_uczestnikow   SMALLINT
+);
+
+ALTER TABLE trening_grupowy ADD CONSTRAINT trening_grupowy_pk PRIMARY KEY ( nazwa );
+
+CREATE TABLE trening_indywidualny (
+    nazwa    VARCHAR(20) NOT NULL,
+    rodzaj   VARCHAR(20)
+);
+
+ALTER TABLE trening_indywidualny ADD CONSTRAINT trening_indywidualny_pk PRIMARY KEY ( nazwa );
+
+CREATE TABLE urzadzenie (
+    nr_inwentarza   SMALLINT NOT NULL,
+    nazwa           VARCHAR(25) NOT NULL,
+    rok_produkcji   DATE NOT NULL,
+    sala_nr_sali    SMALLINT NOT NULL
+);
