@@ -142,3 +142,77 @@ CREATE TABLE urzadzenie (
     rok_produkcji   DATE NOT NULL,
     sala_nr_sali    SMALLINT NOT NULL
 );
+
+ALTER TABLE urzadzenie ADD CONSTRAINT urzadzenie_pk PRIMARY KEY ( nr_inwentarza );
+
+ALTER TABLE abonament
+    ADD CONSTRAINT abonament_klient_fk FOREIGN KEY ( klient_pesel )
+        REFERENCES klient ( pesel );
+
+ALTER TABLE abonament
+    ADD CONSTRAINT abonament_pracownik_fk FOREIGN KEY ( pracownik_id_pracownika )
+        REFERENCES pracownik ( id_pracownika );
+
+ALTER TABLE dyzur_pracownika
+    ADD CONSTRAINT dyzur_pracownika_pracownik_fk FOREIGN KEY ( pracownik_id_pracownika )
+        REFERENCES pracownik ( id_pracownika );
+
+ALTER TABLE konserwacja
+    ADD CONSTRAINT konserwacja_techniczny_fk FOREIGN KEY ( techniczny_id_pracownika )
+        REFERENCES techniczny ( id_pracownika );
+
+ALTER TABLE konserwacja
+    ADD CONSTRAINT konserwacja_urzadzenie_fk FOREIGN KEY ( urzadzenie_nr_inwentarza )
+        REFERENCES urzadzenie ( nr_inwentarza );
+
+ALTER TABLE pracownik
+    ADD CONSTRAINT pracownik_pracownik_fk FOREIGN KEY ( pracownik_id_pracownika )
+        REFERENCES pracownik ( id_pracownika );
+
+ALTER TABLE prowadzenie
+    ADD CONSTRAINT prowadzenie_trener_fk FOREIGN KEY ( trener_id_pracownika )
+        REFERENCES trener ( id_pracownika );
+
+ALTER TABLE prowadzenie
+    ADD CONSTRAINT prowadzenie_trening_fk FOREIGN KEY ( trening_nazwa )
+        REFERENCES trening ( nazwa );
+
+ALTER TABLE przebieg
+    ADD CONSTRAINT przebieg_sala_fk FOREIGN KEY ( sala_nr_sali )
+        REFERENCES sala ( nr_sali );
+
+ALTER TABLE przebieg
+    ADD CONSTRAINT przebieg_trening_fk FOREIGN KEY ( trening_nazwa )
+        REFERENCES trening ( nazwa );
+
+ALTER TABLE rezerwacja
+    ADD CONSTRAINT rezerwacja_klient_fk FOREIGN KEY ( klient_pesel )
+        REFERENCES klient ( pesel );
+
+ALTER TABLE rezerwacja
+    ADD CONSTRAINT rezerwacja_urzadzenie_fk FOREIGN KEY ( urzadzenie_nr_inwentarza )
+        REFERENCES urzadzenie ( nr_inwentarza );
+
+ALTER TABLE techniczny
+    ADD CONSTRAINT techniczny_pracownik_fk FOREIGN KEY ( id_pracownika )
+        REFERENCES pracownik ( id_pracownika );
+
+ALTER TABLE telefon
+    ADD CONSTRAINT telefon_klient_fk FOREIGN KEY ( klient_pesel )
+        REFERENCES klient ( pesel );
+
+ALTER TABLE trener
+    ADD CONSTRAINT trener_pracownik_fk FOREIGN KEY ( id_pracownika )
+        REFERENCES pracownik ( id_pracownika );
+
+ALTER TABLE trening_grupowy
+    ADD CONSTRAINT trening_grupowy_trening_fk FOREIGN KEY ( nazwa )
+        REFERENCES trening ( nazwa );
+
+ALTER TABLE trening_indywidualny
+    ADD CONSTRAINT trening_indywidualny_trening_fk FOREIGN KEY ( nazwa )
+        REFERENCES trening ( nazwa );
+
+ALTER TABLE urzadzenie
+    ADD CONSTRAINT urzadzenie_sala_fk FOREIGN KEY ( sala_nr_sali )
+        REFERENCES sala ( nr_sali );
