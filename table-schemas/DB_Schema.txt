@@ -1,0 +1,30 @@
+TO SHOW DATABASES:
+
+MariaDB [(none)]> show databases
+
+TO CHANGE DATABASE
+
+MariaDB [(none)]> use silownia;
+
+TO SHOW TABLES IN DATABASE
+
+MariaDB [silownia]> show tables;
+
+TO SHOW TABLE STRUCTURE
+
+MariaDB [silownia]> describe abonament;
+MariaDB [silownia]> describe dyzur_pracownika;
+MariaDB [silownia]> describe klient;
+MariaDB [silownia]> describe konserwacja;
+MariaDB [silownia]> describe pracownik;
+MariaDB [silownia]> describe prowadzenie;
+MariaDB [silownia]> describe przebieg;
+MariaDB [silownia]> describe rezerwacja;
+MariaDB [silownia]> describe sala;
+MariaDB [silownia]> describe techniczny;
+MariaDB [silownia]> describe telefon;
+MariaDB [silownia]> describe trener;
+MariaDB [silownia]> describe trening;
+MariaDB [silownia]> describe trening_grupowy;
+MariaDB [silownia]> describe trening_indywidualny;
+MariaDB [silownia]> describe urzadzenie;
