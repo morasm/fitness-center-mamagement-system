@@ -1,0 +1,11 @@
+INSERTING EXAMPLE DATA INTO DB TABLES
+
+MariaDB [silownia]> INSERT INTO pracownik(id_pracownika,data_rozpoczecia_pracy,pensja,premia) VALUES (000001,"2018-05-21",5800,500);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [silownia]> INSERT INTO sala VALUES(001,12);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [silownia]> INSERT INTO techniczny VALUES (000021,"2019-02-10"),(000022,"2019-05-21"),(000023,"2019-06-12");
+Query OK, 3 rows affected (0.003 sec)
+
