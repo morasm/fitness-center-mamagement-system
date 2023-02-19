@@ -1,11 +1,31 @@
 INSERTING EXAMPLE DATA INTO DB TABLES
 
 MariaDB [silownia]> INSERT INTO pracownik(id_pracownika,data_rozpoczecia_pracy,pensja,premia) VALUES (000001,"2018-05-21",5800,500);
-Query OK, 1 row affected (0.003 sec)
 
 MariaDB [silownia]> INSERT INTO sala VALUES(001,12);
-Query OK, 1 row affected (0.003 sec)
 
 MariaDB [silownia]> INSERT INTO techniczny VALUES (000021,"2019-02-10"),(000022,"2019-05-21"),(000023,"2019-06-12");
-Query OK, 3 rows affected (0.003 sec)
 
+MariaDB [silownia]> INSERT INTO trener VALUES (11,'kurs'),(12,'studia AWF'),(13,'studia AWF'),(14,'kurs'),(15,'kurs');
+
+MariaDB [silownia]> INSERT INTO urzadzenie VALUES (18001,'bieznia',"2018-05-31",21);
+
+MariaDB [silownia]> INSERT INTO klient VALUES (92000700000,'Andrzej','Nazwiskowski','Kielce','Morska',823,"2018-07-10");
+
+MariaDB [silownia]> INSERT INTO konserwacja(data_konserwacji,techniczny_id_pracownika,urzadzenie_nr_inwentarza) VALUES ("2019-01-28",21,18002),("2019-01-29",21,18001),("2019-02-02",23,18003),("2019-02-03",23,18004),("2019-02-05",21,18008),("2019-02-05",23,18007),("2019-02-06",22,18005),("2018-02-07",22,18006);
+
+MariaDB [silownia]> INSERT INTO telefon VALUES ('123453434',82102811223),('232121213',92110712987),('987456321',68071251524),('345867123',78092421523),('609123456',82102811223);
+
+MariaDB [silownia]> INSERT INTO trening VALUES ('joga-p',45,'poczatkujacy'),('joga-z',45,'zaawansowany'),('ABS',45,'sredniozaawansowany'),('ABT',45,'sredniozaawansowany'),('spinning',45,'sredniozaawansowany');
+
+MariaDB [silownia]> INSERT INTO trening_grupowy VALUES ('joga-p',8),('joga-z',8),('ABS',12),('ABT',12),('spinning',10);
+
+MariaDB [silownia]> INSERT INTO trening_indywidualny VALUES ('stretching','stretching'),('senior','ogolnorozwojowy'),('rekonwalescent','ogolnorozwojowy'),('silownia','wytrzymalosciowy'),('odchudzanie','odchudzajacy');
+
+MariaDB [silownia]> INSERT INTO rezerwacja VALUES ("2019-01-13",18002,82102811223),("2019-01-15",18004,82102811223),("2019-01-15",18006,92110712987),("2019-01-17",18005,78092421523),("2019-01-18",18006,68071251524);
+
+MariaDB [silownia]> INSERT INTO prowadzenie VALUES (11,'stretching'),(12,'joga-p'),(12,'joga-z'),(13,'senior'),(14,'ABT');
+
+MariaDB [silownia]> INSERT INTO przebieg VALUES ("2019-01-14 16:45:00",3,'joga-p'),("2019-01-14 18:30:00",3,'joga-z'),("2019-01-15 16:00:00",2,'ABT'),("2019-01-16 17:15:00",2,'ABS'),("2019-01-17 18:30:00",16,'spinning');
+
+MariaDB [silownia]> INSERT INTO abonament VALUES (19001,99,"2019-01-27",1,82102811223),(19002,79,"2019-02-01",2,78092421523),(19003,59,"2019-01-12",11,68071251524),(19004,99,"2019-02-02",1,92110712987);
