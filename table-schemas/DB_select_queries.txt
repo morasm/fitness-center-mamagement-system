@@ -1,0 +1,31 @@
+MariaDB [silownia]> SELECT * FROM abonament;
+
+MariaDB [silownia]> SELECT * FROM dyzur_pracownika;
+
+MariaDB [silownia]> SELECT * FROM klient;
+
+MariaDB [silownia]> SELECT * FROM konserwacja;
+
+MariaDB [silownia]> SELECT * FROM pracownik;
+
+MariaDB [silownia]> SELECT * FROM prowadzenie;
+
+MariaDB [silownia]> SELECT * FROM przebieg;
+
+MariaDB [silownia]> SELECT * FROM rezerwacja;
+
+MariaDB [silownia]> SELECT * FROM sala;
+
+MariaDB [silownia]> SELECT * FROM techniczny;
+
+MariaDB [silownia]> SELECT * FROM telefon;
+
+MariaDB [silownia]> SELECT * FROM trener;
+
+MariaDB [silownia]> SELECT * FROM trening;
+
+MariaDB [silownia]> SELECT * FROM trening_grupowy;
+
+MariaDB [silownia]> SELECT * FROM trening_indywidualny;
+
+MariaDB [silownia]> SELECT * FROM urzadzenie;
